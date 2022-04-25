@@ -13,19 +13,24 @@
 <script>
     import 'swiper/css/swiper.min.css'
     import Swiper from 'swiper'
+    import {getBanner} from "@/api";
+
+
 
     export default {
         name: "SwiperCom",
         data() {
             return {
-                imgs: [
-                    {pic: require('../../assets/img/swiper1.jpg'), id: 0},
-                    {pic: require('../../assets/img/swiper2.jpg'), id: 1},
-                    {pic: require('../../assets/img/swiper3.png'), id: 2}
-                ]
+                // imgs: [
+                //     {pic: require('../../assets/img/swiper1.jpg'), id: 0},
+                //     {pic: require('../../assets/img/swiper2.jpg'), id: 1},
+                //     {pic: require('../../assets/img/swiper3.png'), id: 2}
+                // ]
+                imgs:[]
             }
         },
         created() {
+            this.getBannerImgs()
         },
         mounted() {
             // var mySwiper=new Swiper('.swiper-container',{
@@ -36,6 +41,14 @@
                 loop: true,
                 autoplay: true
             })
+            this.getBannerImgs()
+        },
+        methods:{
+          async  getBannerImgs(){
+              const res=await getBanner(1)//和后台要图片数据
+              this.imgs=res.data.banners//要到的数据赋值给data
+
+            }
         }
     }
 </script>
