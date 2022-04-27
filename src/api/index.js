@@ -21,5 +21,8 @@ export  function getMusicList(limit=10) {
     return axios.get(`${baseUrl}/personalized?limit=${limit}`)
 
 }
+export function getPlayListDetail(id) {
+ return axios.get(`${baseUrl}/playlist/detail?id=${id}`)
+}
 //export default 只能导出一个值
 //export 可以导出多个值

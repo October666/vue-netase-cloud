@@ -6,9 +6,15 @@
     <div class="swiper-container swiper-music-list">
         <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in musicList">
+                <router-link :to="{path:'/list',query:{id:item.id}}">
+<!--                    //通过路由向下一个组件传参-->
                 <img :src="item.picUrl" alt="">
-                <span>{{item.playCount}}</span>
+                <span>
+                    {{item.playCount>100000000?(item.playCount/100000000).toFixed(2)+'亿':
+                    (item.playCount/10000).toFixed(2)+'万'}}
+                </span>
                 <p>{{item.name}}</p>
+                </router-link>
             </div>
         </div>
     </div>
@@ -26,12 +32,15 @@
                 musicList: []
             }
         },
-        mounted() {
+        created() {
+            this.getMusicListData()
+        },
+        updated() {
             const mySwiper = new Swiper('.swiper-music-list', {
                 slidesPerView: 3,
                 spaceBetween: 20,
             })
-            this.getMusicListData()
+
         },
         methods: {
             async getMusicListData() {

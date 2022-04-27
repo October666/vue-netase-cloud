@@ -32,16 +32,16 @@
         created() {
             this.getBannerImgs()
         },
-        mounted() {
+       updated() {
             // var mySwiper=new Swiper('.swiper-container',{
             //     loop:true,
             //     autoplay:true
             // })
             const mySwiper = new Swiper('.swiper-home', {
-                loop: true,
+                // loop: true,
                 autoplay: true
             })
-            this.getBannerImgs()
+            // this.getBannerImgs()
         },
         methods:{
           async  getBannerImgs(){

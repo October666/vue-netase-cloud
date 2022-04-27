@@ -3,8 +3,13 @@
 </template>
 
 <script>
+    import HeaderCom from "@/components/header/HeaderCom";
+
     export default {
-        name: "VideoView"
+        name: "VideoView",
+        components:{
+            HeaderCom
+    }
     }
 </script>
 
